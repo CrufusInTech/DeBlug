@@ -8,7 +8,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-app.get("/", (req,res) => {
+app.get("/", (req,res) =>{
+    res.render("post-form");
+})
+
+app.post("/home",(req,res) =>{
     res.render("index");
 })
 
