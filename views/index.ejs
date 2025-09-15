@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeBlogger</title>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-    <h1>Hola</h1>
-    
+   <% posts.forEach(post => {%>
+    <div class="post">
+        <h1><%= post.postTitle%></h1>
+        <h1><%= post.postContent%></h1>
+    </div>
+   <% }); %>
+
+   <% if(posts.length === 0) { %>
+        <div class = "no-posts">
+            <p>There are no posts yet. Be the first to create one!</p>
+        </div>
+   <% } %>
+
+
+
 </body>
 </html>
