@@ -9,17 +9,17 @@
 <body>
     <div id="p_form">
 
-        <form action="/new-post" method="POST">
+        <form action="/posts" method="POST">
 
         
             <div class="form-group">
                 <label for="postTitle">Post Title</label>
-                <input type="text" id="postTitle" name="p_title" placeholder="Enter your post title" required> 
+                <input type="text" id="postTitle" name="postTitle" placeholder="Enter your post title" required> 
             </div>
         
             <div class="form-group">
-                <label for="postContent">Post content</label>
-                <textarea name="content" id="postContent" placeholder="Type here"></textarea>
+                <label for="postContent">Post Content</label>
+                <textarea name="postContent" id="postContent" placeholder="Type here"></textarea>
             </div>
 
             <button type="submit">Submit Post</button>
