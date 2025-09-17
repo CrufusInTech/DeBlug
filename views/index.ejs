@@ -7,18 +7,20 @@
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-   <% posts.forEach(post => {%>
-    <div class="post">
-        <h1><%= post.postTitle%></h1>
-        <h1><%= post.postContent%></h1>
-    </div>
-   <% }); %>
+    <%- include('partials/header.ejs') %>
 
-   <% if(posts.length === 0) { %>
-        <div class = "no-posts">
-            <p>There are no posts yet. Be the first to create one!</p>
+    <% posts.forEach(post => {%>
+        <div class="post">
+            <h1><%= post.postTitle%></h1>
+            <h1><%= post.postContent%></h1>
         </div>
-   <% } %>
+    <% }); %>
+
+    <% if(posts.length === 0) { %>
+            <div class = "no-posts">
+                <p>There are no posts yet. Be the first to create one!</p>
+            </div>
+    <% } %>
 
 
 
