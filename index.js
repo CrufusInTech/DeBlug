@@ -12,11 +12,12 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 app.get("/", (req,res) =>{
-    res.render("post-form");
+    res.render("index");
 })
-app.get("/home", (req,res) =>{
-    res.render("index",{posts: createPost});
-})
+/*
+// app.get("/home", (req,res) =>{
+//     res.render("index",{posts: createPost});
+// })
 
 app.post("/posts",(req,res) =>{
     // Accessing my Post form details
@@ -30,6 +31,7 @@ app.post("/posts",(req,res) =>{
     
   
 });
+*/
 
 app.listen(port, () => {
     console.log(`Server starts at http:localhost:${port}`);

@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    height: 66px;
+    background: black;
+    color: white;
+}
+
+header .logo{
+    float: left;
+}
+
+header ul{
+    float: right;
+}
+
+header .menu-toggle{
+    display: none;
+}
