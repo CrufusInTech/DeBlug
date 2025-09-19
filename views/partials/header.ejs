@@ -6,6 +6,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Candal&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    
     <!-- Custom Styling  -->
     <link rel="stylesheet" href="/styles/header.css">
     <title>DeBlogger</title>
@@ -13,7 +18,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1 class="logo-text"><span>DeBlogger</span></h1>
+            <h1 class="logo-text"><a href="#"><span>De</span>Blogger</a></h1>
         </div>
         <i class="fa-solid fa-bars menu-toggle"></i>
 
@@ -25,11 +30,20 @@
             <li><a href="#">Login</a></li> -->
 
 
-            <li><a href="#"><i class="fa-solid fa-user"></i>John Doe</a></li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-user"></i>
+                    John Doe
+                    <i class="fa fa-chevron-down" style="font-size: .8em;"></i>
+                </a>
+
                 <ul>
                     <li><a href="#">Dashboard</a></li>
                     <li ><a href="#" class="logout">Logout</a></li>
                 </ul>   
+            
+            </li>
+               
         </ul>
     </header>
 </body>

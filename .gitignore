@@ -1,1 +1,13 @@
+# Dependency directories
+/node_modules
+
+# Logs and debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Personal files
 rough.txt
+
+# Sensitive files
+#.env
