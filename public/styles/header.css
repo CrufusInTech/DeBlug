@@ -99,9 +99,16 @@ header .menu-toggle{
 
 /* Media Queries */
 @media only screen and (max-width: 750px){
+header{
+        position: relative;
+    }
 header .menu-toggle{
     display: block;
     float: right;
+    position: absolute;
+    right: 20px;
+    top: 1.25rem;
+    font-size: 1.6em;
 }
 
 header ul{
@@ -111,6 +118,7 @@ header ul{
 
 header ul.active{
     display: block;
+    transition: ease-in 1s;
 }
 
 header .logo{
