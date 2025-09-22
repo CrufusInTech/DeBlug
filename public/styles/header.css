@@ -99,22 +99,35 @@ header .menu-toggle{
 
 /* Media Queries */
 @media only screen and (max-width: 750px){
+header .menu-toggle{
+    display: block;
+    float: right;
+}
+
 header ul{
     width: 100%;
+    display:none;
 }
-header ul li{
-    width: 100%;
+
+header ul.active{
+    display: block;
 }
 
 header .logo{
-float: left;
-height: inherit;
-margin-left: .7em;
+    margin-left: .7em;
 }
 
 header .logo-text{
     font-size: 1.9rem;
-
 }
-    
+
+header ul li{
+    width: 100%;
+}
+
+header ul li ul li a{
+    padding: 10px;
+    padding-left: 50px;
+}
+
 }
