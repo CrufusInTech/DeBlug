@@ -1,8 +1,19 @@
 body {
   font-family: sans-serif;
-  background-color: black; 
+  background-color: #F5F1ED; 
   min-height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
-/* no post */
+/* Post Slider */
+.post-slider{
+  border: 1px solid red;
+}
+
+.post-slider .post-wrapper{
+  width: 85%;
+  border: 1px dashed red;
+  margin: 0px auto;
+  height: 350px;
+}

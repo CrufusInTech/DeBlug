@@ -5,16 +5,16 @@
 }
 
 body{
-    font-family: 'Lora', serif;
+    font-family: sans-serif;
 }
 
 header{
     height: 66px;
-    background: blanchedalmond;
+    background-color: #DAD2BC;
 }
 
 header *{
-    color: green;
+    color: #252323;
 }
 
 header .logo{
@@ -26,6 +26,7 @@ header .logo{
 header .logo-text{
     margin: 8px 8px 0px 8px;
     font-family: 'Candal', serif;
+    color: green;
 }
 
 header .logo-text a{
@@ -33,12 +34,14 @@ header .logo-text a{
 }
 
 header .logo-text span{
-    color: orange;
+    color: #3D405B;
 }
 
 header ul{
     float: right;
     list-style: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
 }
 
 header ul li{
@@ -55,19 +58,31 @@ header ul li a{
 }
 
 header ul li a:hover{
-    background-color: rgba(255, 255, 255, 0.582);
-    transition: 0.5s;
+    transition: all 0.1s ease;;
+    transform: scale(1.1);
+    color: #a99985d8;
 }
 
+header ul li .user-drop:hover{
+    transform: none;
+    background: #A99985;
+    color: black;
+}
 
 header ul li ul{
     position: absolute;
-    background: black;
+    background: #DAD2BC;
     top: 66px;
-    right: 0px;
+    right: 5px;
+    box-shadow: rgba(0, 0, 0, 0.151) 0 0 0 1px, rgba(0, 0, 0, 0.174) 0 15px 30px 0px;
+    border-radius: 5px;
     display: none;
-    /* width: 100%; */
+
 }
+header ul li ul:hover{
+    border-top: 1px solid #3D405B;
+}
+
 
 header ul li:hover ul{
     display: block;
@@ -77,19 +92,24 @@ header ul li ul li{
     width: 100%;
 }
 
-header ul li ul:hover li{
-    display: block;
+header ul li ul li:hover{
+    background: #A99985;
+}
+
+header ul li ul li:hover a{
+    color: white;
 }
 
 header ul li ul li a{
     padding: 10px;
+    color: white;
 }
 header ul li ul li a.logout{
     color: red;
 }
 
 header ul li ul li a:hover{
-    background-color: blue;
+    transform: none;
 }
 
 header .menu-toggle{
@@ -109,6 +129,10 @@ header .menu-toggle{
     right: 20px;
     top: 1.25rem;
     font-size: 1.6em;
+}
+header .menu-toggle.bg{
+    background-color: #81B29A;
+    transition: all 0.3s ease;
 }
 
 header ul{
@@ -131,6 +155,12 @@ header .logo-text{
 
 header ul li{
     width: 100%;
+}
+
+header ul li a:hover{
+    transition: all 0.1s ease;;
+    transform: none;
+    color: #a99985d8;
 }
 
 header ul li ul li a{
