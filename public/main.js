@@ -3,7 +3,13 @@ $(document).ready(function() {
     $('.menu-toggle').on('click', function() {
         $('.nav').toggleClass('active');
         $('.menu-toggle').toggleClass('bg');
-        $('.user-drop').toggleClass('user-close');
 
+    });
+});
+
+$(document).ready(function() {
+    $('.user-drop').on('click', function() {
+         $('.drop-down').toggleClass('drop-close');
+      
     });
 });
