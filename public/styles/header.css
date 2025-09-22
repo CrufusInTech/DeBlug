@@ -72,6 +72,14 @@ header ul li .user-drop:hover{
     color: black;
 }
 
+.fa-chevron-up{
+    transition: transform 0.5s ease;
+}
+
+.user-drop:hover .fa-chevron-up{
+    transform: rotate(180deg);
+}
+
 header ul li ul{
     position: absolute;
     background: #DAD2BC;
@@ -176,8 +184,7 @@ header ul li ul li a{
     padding: 10px;
     padding-left: 50px;
 }
-
-header ul li .user-drop .drop-down.drop-close{
+.drop-close{
     display: none;
 }
 
