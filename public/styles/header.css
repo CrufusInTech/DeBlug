@@ -8,6 +8,7 @@ body{
     font-family: sans-serif;
 }
 
+/* Header */
 header{
     height: 66px;
     background-color: #DAD2BC;
@@ -17,6 +18,7 @@ header *{
     color: #252323;
 }
 
+/* Logo */
 header .logo{
     float: left;
     height: inherit;
@@ -37,6 +39,7 @@ header .logo-text span{
     color: #3D405B;
 }
 
+/* Navbar */
 header ul{
     float: right;
     list-style: none;
@@ -48,7 +51,6 @@ header ul li{
     float: left;
     position: relative;
 }
-
 
 header ul li a{
     display: block;
@@ -63,6 +65,7 @@ header ul li a:hover{
     color: #a99985d8;
 }
 
+/* Nav User Drop-down */
 header ul li .user-drop:hover{
     transform: none;
     background: #A99985;
@@ -112,6 +115,7 @@ header ul li ul li a:hover{
     transform: none;
 }
 
+/* Navbar Menu */
 header .menu-toggle{
     display: none;
 }
@@ -119,9 +123,12 @@ header .menu-toggle{
 
 /* Media Queries */
 @media only screen and (max-width: 750px){
+            /* Header */
+/* Navbar Menu */
 header{
         position: relative;
     }
+
 header .menu-toggle{
     display: block;
     float: right;
@@ -130,11 +137,13 @@ header .menu-toggle{
     top: 1.25rem;
     font-size: 1.6em;
 }
+
 header .menu-toggle.bg{
     background-color: #81B29A;
     transition: all 0.3s ease;
 }
 
+/* Navbar */
 header ul{
     width: 100%;
     display:none;
@@ -166,6 +175,10 @@ header ul li a:hover{
 header ul li ul li a{
     padding: 10px;
     padding-left: 50px;
+}
+
+header ul li .user-drop.user-close{
+    display: none;
 }
 
 }
