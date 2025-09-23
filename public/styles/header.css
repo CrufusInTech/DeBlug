@@ -200,7 +200,7 @@ header ul li ul li a{
     display: block;
 }
 
-.fa-chevron-up.down{
+header ul li:hover .fa-chevron-up.down{
      transform: rotate(180deg);
 }
 
