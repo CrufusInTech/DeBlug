@@ -80,10 +80,6 @@ header ul li:hover .fa-chevron-up {
     transform: rotate(180deg);
 }
 
-.fa-chevron-up.down{
-     transform: rotate(180deg);
-}
-
 header ul li ul{
     position: absolute;
     background: #DAD2BC;
@@ -98,9 +94,6 @@ header ul li ul{
     border-top: 1px solid #3D405B;
 } */
 
-.user-list .drop-down.open{
-    display: block;
-}
 
 header ul li:hover ul{
     display: block;
@@ -197,6 +190,14 @@ header ul li a:hover{
 header ul li ul li a{
     padding: 10px;
     padding-left: 50px;
+}
+
+.user-list .drop-down.open{
+    display: block;
+}
+
+.fa-chevron-up.down{
+     transform: rotate(180deg);
 }
 
 }
