@@ -8,8 +8,9 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $('.user-drop').on('click', function() {
-         $('.drop-down').toggleClass('drop-close');
+    $('.user-list').on('click', function() {
+        $('.drop-down').toggleClass('open');
+        $('.fa-chevron-up').toggleClass('down');
       
     });
 });
