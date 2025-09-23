@@ -187,6 +187,9 @@ header ul li a:hover{
 header ul li:hover ul{
     display: none;
 }
+header ul li:hover .fa-chevron-up {
+    transform: none;
+}
 
 header ul li ul li a{
     padding: 10px;
