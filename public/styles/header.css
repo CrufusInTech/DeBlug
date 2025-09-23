@@ -134,14 +134,21 @@ header .menu-toggle{
 }
 
 
-/* Media Queries */
+    /* MEDIA QUERIES*/
+
 @media only screen and (max-width: 750px){
 /* Header */
-
-/* Navbar Menu */
 header{
-        position: relative;
-    }
+    position: relative;
+}
+  
+header .logo{
+    margin-left: .7em;
+}
+
+header .logo-text{
+    font-size: 1.9rem;
+}
 
 header .menu-toggle{
     display: block;
@@ -157,23 +164,14 @@ header .menu-toggle.bg{
     transition: all 0.3s ease;
 }
 
-/* Navbar */
 header ul{
     width: 100%;
     display:none;
+
 }
 
 header ul.active{
     display: block;
-    transition: ease-in 1s;
-}
-
-header .logo{
-    margin-left: .7em;
-}
-
-header .logo-text{
-    font-size: 1.9rem;
 }
 
 header ul li{
@@ -186,6 +184,9 @@ header ul li a:hover{
     color: #a99985d8;
 }
 
+header ul li:hover ul{
+    display: none;
+}
 
 header ul li ul li a{
     padding: 10px;
