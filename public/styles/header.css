@@ -61,7 +61,7 @@ header ul li a{
 header ul li a:hover{
     transition: all 0.1s ease;;
     transform: scale(1.1);
-    color: #a99985d8;
+    color: #DAD2BC;
 }
 
 /* Nav User Drop-down */
