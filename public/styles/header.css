@@ -67,7 +67,7 @@ header ul li a:hover{
 /* Nav User Drop-down */
 header ul li .user-link:hover{
     transform: none;
-    background: #A99985;
+    background: #DAD2BC;
     color: black;
 }
 
