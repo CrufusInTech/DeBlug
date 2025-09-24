@@ -81,7 +81,7 @@ header ul li:hover .fa-chevron-up {
 
 header ul li ul{
     position: absolute;
-    background: #DAD2BC;
+    background: #A99985;
     top: 101%;       
     right: 0px;
     box-shadow: rgba(0, 0, 0, 0.151) 0 0 0 1px, rgba(0, 0, 0, 0.174) 0 15px 30px 0px;
@@ -103,7 +103,7 @@ header ul li ul li{
 }
 
 header ul li ul li:hover{
-    background: #A99985;
+    background:  #DAD2BC;
 }
 
 header ul li ul li:hover a{
