@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeBlug</title>
+    <title>DeBlogger</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+        
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Candal&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     
     <!-- Custom Css -->
     <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/header.css">
 </head>
 <body>
     <%- include('partials/header.ejs') %>
@@ -21,7 +27,6 @@
             <h1 class="slider-title">Trending Post</h1>
             <i class="fas fa-chevron-left prev"></i>
             <i class="fas fa-chevron-right next"></i>
-
             
             <div class="post-wrapper">
                 <div class="post one">
@@ -41,7 +46,7 @@
                        <span><i class="far fa-calendar"></i> Sep 24, 2025</span>
                     </div>
                 </div>
-
+                
                 <div class="post three">
                     <img src="/images/image_1.jpg" alt="" class="slider-image" >
                     <div class="post-info">
@@ -59,11 +64,17 @@
                        <span><i class="far fa-calendar"></i> Sep 24, 2025</span>
                     </div>
                 </div>
-                <!-- <div class="post">2</div>
-                <div class="post">3</div>
-                <div class="post">4</div>
-                <div class="post">5</div> -->
+
+                <div class="post five">
+                    <img src="/images/image_1.jpg" alt="" class="slider-image" >
+                    <div class="post-info">
+                        <h4><a href="single.html">One day your life will change with one second</a></h4>
+                       <span><i class="far fa-user"></i> John Doe</span>
+                       <span><i class="far fa-calendar"></i> Sep 24, 2025</span>
+                    </div>
+                </div>
             </div>
+
 
          </div>
         <!-- Post Slider(Carousel) -->
@@ -73,7 +84,7 @@
 
 
     <!-- Jquery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Slick Carousel + Custom Js -->
    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="/main.js"></script>

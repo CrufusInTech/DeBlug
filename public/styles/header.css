@@ -4,10 +4,6 @@
     padding: 0px; 
 }
 
-body{
-    font-family: sans-serif;
-}
-
 /* Header */
 header{
     height: 66px;
@@ -42,7 +38,6 @@ header .logo-text span{
 header ul{
     float: right;
     list-style: none;
-    font-family: "Montserrat", sans-serif;
     font-weight: 600;
 }
 
@@ -81,18 +76,13 @@ header ul li:hover .fa-chevron-up {
 
 header ul li ul{
     position: absolute;
-    background: #A99985;
+    background: #DAD2BC;
     top: 101%;       
     right: 0px;
     box-shadow: rgba(0, 0, 0, 0.151) 0 0 0 1px, rgba(0, 0, 0, 0.174) 0 15px 30px 0px;
-    /* border-radius: 5px; */
     display: none;
 
 }
-/* header ul li ul:hover{
-    border-top: 1px solid #3D405B;
-} */
-
 
 header ul li:hover ul{
     display: block;
@@ -100,10 +90,11 @@ header ul li:hover ul{
 
 header ul li ul li{
     width: 100%;
+    background-color: #A99985;
 }
 
 header ul li ul li:hover{
-    background:  #DAD2BC;
+    background: #DAD2BC;
 }
 
 header ul li ul li:hover a{
@@ -112,7 +103,7 @@ header ul li ul li:hover a{
 
 header ul li ul li a{
     padding: 10px;
-    color: white;
+    color: #252323;
 }
 header ul li ul li a.logout{
     color: red;
@@ -122,7 +113,6 @@ header ul li ul li a.logout{
     height: 20px;
     width: 20px;
 }
-
 header ul li ul li a:hover{
     transform: none;
 }
@@ -156,20 +146,27 @@ header .menu-toggle{
     right: 20px;
     top: 1.25rem;
     font-size: 1.6em;
+    cursor: pointer;
+    z-index: 1001;
 }
 
-header .nav{
+header ul{
+    position: absolute;
+    top: 66px;
+    left: 0;
     width: 100%;
-    display:none;
-
+    display: none;
+    background: #DAD2BC;
+    z-index: 100;
 }
 
-header .nav.active{
+header ul.active{
     display: block;
 }
 
 header ul li{
     width: 100%;
+    float: none;
 }
 
 header ul li a:hover{
@@ -192,6 +189,8 @@ header ul li ul li a{
 
 .user-list .drop-down.open{
     display: block;
+    position: absolute;
+    top: 100%;
 }
 
 header ul li:hover .fa-chevron-up.down{
