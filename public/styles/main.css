@@ -6,9 +6,51 @@ body {
   padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Candal', 'serif';
+  color: grey;
+  margin: 5px;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Page Wrapper */
+.page-wrapper a:hover{
+  color: #A99985;
+}
+
 /* Post Slider */
 .post-slider{
-  border: 1px solid red;
+  position: relative;
+  /* border: 1px solid red; */
+}
+
+.post-slider .slider-title{
+  text-align: center;
+  margin: 30px auto;
+  font-size: 1.7em;
+}
+
+.post-slider .next{
+  position: absolute;
+  top: 50%;
+  right:30px;
+  font-size: 2em;
+  color: red;
+  cursor: pointer;
+}
+
+.post-slider .prev{
+  position: absolute;
+  top: 50%;
+  left:30px;
+  font-size: 2em;
+  color: red;
+  cursor: pointer;
+
 }
 
 .post-slider .post-wrapper{
@@ -16,4 +58,37 @@ body {
   border: 1px dashed red;
   margin: 0px auto;
   height: 350px;
+  padding: 10px 0px;
+  overflow: hidden;
+}
+
+.post-slider .post-wrapper .post{
+  width: 300px;
+  height: 330px ;
+  display: inline-block;
+  margin: 0px 10px;
+  background: white;
+  border-radius: 10px;
+}
+
+.post-slider .post-wrapper .post .slider-image{
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 5px; 
+  border-top-right-radius: 5px; 
+
+}
+
+.post-slider .post-wrapper .post .post-info {
+  color: grey; /* Added a color for readability */
+  height: 130px;
+  border: 1px red solid;
+  padding: 0px 5px;
+
+}
+
+.post-slider .post-wrapper .post .post-info span {
+  display: inline-block; /* Aligns the icon and text */
+  align-items: center; /* Vertically centers them */
+  margin: 20px 25px;
 }

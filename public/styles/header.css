@@ -11,7 +11,7 @@ body{
 /* Header */
 header{
     height: 66px;
-    background-color: #DAD2BC;
+    background-color: #A99985;
 }
 
 header *{
@@ -28,7 +28,6 @@ header .logo{
 header .logo-text{
     margin: 8px 8px 0px 8px;
     font-family: 'Candal', serif;
-    color: green;
 }
 
 header .logo-text a{
@@ -36,7 +35,7 @@ header .logo-text a{
 }
 
 header .logo-text span{
-    color: #3D405B;
+    color: #DAD2BC;
 }
 
 /* Navbar */

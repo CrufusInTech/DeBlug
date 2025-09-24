@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeBlogger</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    
+    <!-- Custom Css -->
     <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
@@ -12,23 +16,39 @@
     <!-- Page Wrapper -->
     <div class="page-wrapper">
 
-        <!-- Page Slider -->
+        <!-- Post Slider(Carousel) -->
          <div class="post-slider">
-            <h1 class="slide-title">Trending Post</h1>
+            <h1 class="slider-title">Trending Post</h1>
+            <i class="fas fa-chevron-left prev"></i>
+            <i class="fas fa-chevron-right next"></i>
+
             
             <div class="post-wrapper">
-                <div class="post">1</div>
-                <div class="post">2</div>
+                <div class="post">
+                    <img src="/images/image_1.jpg" alt="" class="slider-image" >
+                    <div class="post-info">
+                        <h4><a href="single.html">One day your life will change with one second</a></h4>
+                       <span><i class="far fa-user"></i> John Doe</span>
+                       <span><i class="far fa-calendar"></i> Sep 24, 2025</span>
+                    </div>
+                </div>
+                <!-- <div class="post">2</div>
                 <div class="post">3</div>
                 <div class="post">4</div>
-                <div class="post">5</div>
+                <div class="post">5</div> -->
             </div>
 
          </div>
-        <!-- Page Slider -->
+        <!-- Post Slider(Carousel) -->
 
     </div>
     <!-- Page Wrapper -->
 
+
+    <!-- Jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Slick Carousel + Custom Js -->
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="/main.js"></script>
 </body>
 </html>
