@@ -39,7 +39,7 @@ a{
   top: 50%;
   right:30px;
   font-size: 2em;
-  color: red;
+  color: #252323;
   cursor: pointer;
 }
 
@@ -48,14 +48,13 @@ a{
   top: 50%;
   left:30px;
   font-size: 2em;
-  color: red;
+  color: #252323;
   cursor: pointer;
 
 }
 
 .post-slider .post-wrapper{
   width: 85%;
-  border: 1px dashed red;
   margin: 0px auto;
   height: 350px;
   padding: 10px 0px;
@@ -82,7 +81,6 @@ a{
 .post-slider .post-wrapper .post .post-info {
   color: grey; /* Added a color for readability */
   height: 130px;
-  border: 1px red solid;
   padding: 0px 5px;
 
 }
