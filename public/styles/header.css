@@ -148,6 +148,7 @@ header .menu-toggle{
     font-size: 1.6em;
     cursor: pointer;
     z-index: 1001;
+    transition: 0.3s ease;
 }
 
 header ul{

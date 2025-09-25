@@ -10,15 +10,24 @@ body{
   box-sizing: border-box;
 }
 
-.container{
+/* .container{
     display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 50px;
+} */
+
+
+.wrapper{
+  max-width: 1100px;
+  padding: 20px 10px;
+  margin: 0 60px 35px;
+  overflow: hidden
+
 }
 
+
 .wrapper .card{
-  width: 350px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -127,12 +136,29 @@ body{
   font-size: 0.81rem;
   font-weight: 600;
   text-decoration: none;
-  background: brown;
+  background: #A99985;
   box-shadow: 0 8px 15px rgba(99, 102, 241, 0.2);
   transition: all 0.3s ease;
 }
 
 .card .card-footer .card-button:hover{
-  transform:translateY(-3px);
+   transform: scale(1.05);
   box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+}
+
+.swiper-button-prev{
+  color: #252323;
+}
+
+.swiper-button-next{
+  color: #252323;
+}
+
+.wrapper .swiper-pagination-bullet{
+  height: 15px;
+  width: 15px;
+  overflow: hidden;
+  opacity: 1;
+  background: #DAD2BC;
+  ;
 }
