@@ -1,92 +1,138 @@
-body {
-  font-family: sans-serif;
+/* Importing Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+body{
+  font-family: "inter", sans-serif;
   background-color: #F5F1ED; 
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6{
-  font-family: 'Candal', 'serif';
-  color: grey;
-  margin: 5px;
+.container{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
 }
 
-a{
-  text-decoration: none;
-  color: inherit;
+.wrapper .card{
+  width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
 }
 
-/* Page Wrapper */
-.page-wrapper a:hover{
-  color: #A99985;
+.wrapper .card:hover{
+  transform: translateY(-10px);
 }
 
-/* Post Slider */
-.post-slider{
+.card .card-image{
   position: relative;
-  /* border: 1px solid red; */
-}
-
-.post-slider .slider-title{
-  text-align: center;
-  margin: 30px auto;
-  font-size: 1.7em;
-}
-
-.post-slider .next{
-  position: absolute;
-  top: 50%;
-  right:30px;
-  font-size: 2em;
-  color: #252323;
-  cursor: pointer;
-}
-
-.post-slider .prev{
-  position: absolute;
-  top: 50%;
-  left:30px;
-  font-size: 2em;
-  color: #252323;
-  cursor: pointer;
 
 }
 
-.post-slider .post-wrapper{
-  width: 85%;
-  margin: 0px auto;
-  height: 350px;
-  padding: 10px 0px;
-  overflow: hidden;
-}
-
-.post-slider .post-wrapper .post{
-  width: 300px;
-  height: 330px ;
-  display: inline-block;
-  margin: 0px 10px;
-  background: white;
-  border-radius: 10px;
-}
-
-.post-slider .post-wrapper .post .slider-image{
+.card .card-image img{
   width: 100%;
-  height: 200px;
-  border-top-left-radius: 5px; 
-  border-top-right-radius: 5px; 
-
+  padding: 10px;
+  border-radius: 22px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
-.post-slider .post-wrapper .post .post-info {
-  color: grey; /* Added a color for readability */
-  height: 130px;
-  padding: 0px 5px;
-
+.card .card-image .card-tag{
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.9);
 }
 
-.post-slider .post-wrapper .post .post-info span {
-  display: inline-block; /* Aligns the icon and text */
-  align-items: center; /* Vertically centers them */
-  margin: 20px 25px;
+.card .card-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 25px 25px;
+}
+
+.card .card-content .card-title{
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 15px;
+}
+
+.card .card-content .card-text{
+  color: grey;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card .card-content .card-footer{
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  margin-top: auto;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card .card-footer .card-profile{
+  display: flex;
+  align-items: center;
+}
+
+.card .card-profile img{
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-profile .card-profile-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.card .card-profile .card-profile-name{
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #202020;
+}
+
+.card .card-profile .card-profile-role{
+  font-size: 0.8rem;
+  color: #7a7a7a;
+}
+
+.card .card-footer .card-button{
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 0.81rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: brown;
+  box-shadow: 0 8px 15px rgba(99, 102, 241, 0.2);
+  transition: all 0.3s ease;
+}
+
+.card .card-footer .card-button:hover{
+  transform:translateY(-3px);
+  box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
 }
