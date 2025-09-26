@@ -86,6 +86,7 @@ header ul li ul{
 
 header ul li:hover ul{
     display: block;
+    z-index: 100;
 }
 
 header ul li ul li{
