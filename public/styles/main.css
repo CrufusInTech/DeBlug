@@ -11,26 +11,22 @@ body{
 }
 
 .container{
-  /* display: flex;
+  display: flex;
   align-items: center;
-  justify-content: center; */
-  padding-top: 15px;
+  justify-content: center;
+  padding-top: 20px;
 }
-
 
 .wrapper{
+  max-width: 1000px;
   padding: 20px 10px;
   margin: 0 60px 35px;
-  overflow: hidden;
+  overflow: hidden
 }
 
-
 .wrapper .card{
-  height: auto;
   display: flex;
   flex-direction: column;
-  width: 300px;    /* fix width */
-  flex-shrink: 0;  /* stop it from squeezing */
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
