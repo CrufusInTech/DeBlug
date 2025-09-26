@@ -18,6 +18,13 @@ const swiper = new Swiper('.wrapper', {
   loop: true,
   spaceBetween: 30,
 
+  // Autoplay
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+
   // Pagination
   pagination: {
     el: '.swiper-pagination',

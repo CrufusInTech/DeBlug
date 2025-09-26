@@ -10,6 +10,13 @@ body{
   box-sizing: border-box;
 }
 
+/* Carousel */
+.Post-h1{
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Candal', sans-serif;
+}
+
 .container{
   display: flex;
   align-items: center;
@@ -133,13 +140,13 @@ body{
   font-weight: 600;
   text-decoration: none;
   background: #A99985;
-  box-shadow: 0 8px 15px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 8px 15px 	rgba(242,204,143,0.3);
   transition: all 0.3s ease;
 }
 
 .card .card-footer .card-button:hover{
    transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 15px 	rgba(242,204,143,0.5);
 }
 
 .swiper-button-prev{
@@ -157,4 +164,49 @@ body{
   opacity: 1;
   background: #DAD2BC;
   ;
+}
+
+.wrapper .swiper-pagination-bullet-active::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #202020;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: autoplay-loading 3s linear forwards;
+}
+
+.container:hover .wrapper .swiper-pagination-bullet-active::before{
+  animation-play-state: paused;
+}
+
+@keyframes autoplay-loading {
+  100% {
+    transform: scaleX(1);
+  }
+  
+}
+
+.wrapper :where(.swiper-button-prev,.swiper-button-next){
+  color: #202020;
+  margin-top: -35px;
+  transition: all 0.3s ease;
+}
+
+.wrapper :where(.swiper-button-prev,.swiper-button-next):hover{
+  color: #202020;
+}
+
+/* Responsive media query code for small screens */
+@media (max-width: 768px){
+  .wrapper{
+    margin: 0 10px 25px;
+  }
+
+  .wrapper :where(.swiper-button-prev, .swiper-button-next) {
+    display: none;
+  }
 }
