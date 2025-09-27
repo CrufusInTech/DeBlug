@@ -1,0 +1,174 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px; 
+}
+
+body{
+    font-family: "inter", sans-serif;
+    background-color: #F5F1ED; 
+}
+
+/* HEADER */
+header{
+    height: 66px;
+}
+
+header *{
+    color: #252323;
+}
+
+/* Logo */
+header .logo{
+    float: left;
+    height: inherit;
+    margin-left: 2em;
+}
+
+header .logo-text{
+    margin: 8px 8px 0px 8px;
+    font-family: 'Candal', serif;
+}
+
+header .logo-text a{
+    text-decoration: none;
+}
+
+header .logo-text span{
+    color: #A99985;
+}
+
+/* Navbar */
+header ul{
+    float: right;
+    list-style: none;
+    font-weight: 600;
+}
+
+header ul li{
+    float: left;
+    position: relative;
+}
+
+header ul li a{
+    display: block;
+    padding: 21px;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+header ul li a:hover{
+    transition: all 0.1s ease;;
+    transform: scale(1.1);
+    color: #A99985;
+}
+
+.sign-up {
+    background: #000;
+    border: none;
+    border-radius: 50px;
+    padding:  10px 15px; 
+    
+    /* Cursor indicates it's clickable */
+    cursor: pointer;
+    display: inline-block;
+    
+    /* Remove any default margin that might be affecting the layout */
+    margin: 15px 25px 15px 15px ;
+}
+
+/* 2. Style the inner LINK element (a) to set the text color and appearance */
+.sign-up a {
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove the underline */
+    
+    /* Text appearance */
+    font-size: 14px;
+    font-weight: 600;
+    
+    /* Ensure the link text displays correctly inside the button */
+    display: block;
+}
+
+/* Optional: Add a subtle hover effect */
+.sign-up:hover {
+    background: #222;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+    /* MEDIA QUERIES*/
+
+@media only screen and (max-width: 750px){
+/* Header */
+header{
+    position: relative;
+}
+  
+header .logo{
+    margin-left: .7em;
+}
+
+header .logo-text{
+    font-size: 1.9rem;
+}
+
+header ul{
+    position: absolute;
+    top: 66px;
+    left: 0;
+    width: 100%;
+    display: none;
+    background: #DAD2BC;
+    z-index: 100;
+}
+
+header ul.active{
+    display: block;
+}
+
+header ul li{
+    width: 100%;
+    float: none;
+}
+
+header ul li a:hover{
+    transition: all 0.1s ease;;
+    transform: none;
+    color: #a99985d8;
+}
+
+header ul li:hover ul{
+    display: none;
+}
+
+
+}
+
+/* HERO SECTION */
+.hero{
+        /* --- NEW CODE HERE --- */
+    display: flex;             /* 1. Turns on Flexbox layout */
+    justify-content: space-between; /* 2. Puts space between the elements */
+    align-items: center;       /* 3. Vertically centers them */
+    /* -------------------- */
+
+    /* It's helpful to give the hero container a defined height */
+    min-height: 80vh; 
+    padding: 20px;
+}
+
+.hero-text{
+    width: 50%;
+    height: 400px;
+}
+.hero-image{
+    width: 70%;
+    height: 600px;
+    padding: 10px;
+    
+}
+
+.hero-image img{
+    width: 100%;
+
+}

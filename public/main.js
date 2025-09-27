@@ -13,6 +13,7 @@ $(document).ready(function() {
     });
 });
 
+// Swip]per/Carousel
 
 const swiper = new Swiper('.wrapper', {
   loop: true,
