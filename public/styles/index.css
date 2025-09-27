@@ -9,7 +9,7 @@ body{
     background-color: #F5F1ED; 
 }
 
-/* HEADER */
+/* HEADER SECTION */
 header{
     height: 66px;
 }
@@ -18,7 +18,7 @@ header *{
     color: #252323;
 }
 
-/* Logo */
+/* LOGO */
 header .logo{
     float: left;
     height: inherit;
@@ -38,7 +38,7 @@ header .logo-text span{
     color: #A99985;
 }
 
-/* Navbar */
+/* NAVBAR SECTION */
 header ul{
     float: right;
     list-style: none;
@@ -64,42 +64,31 @@ header ul li a:hover{
 }
 
 .sign-up {
-    background: #000;
+    background: #70798c7a;
     border: none;
     border-radius: 50px;
     padding:  10px 15px; 
-    
-    /* Cursor indicates it's clickable */
     cursor: pointer;
     display: inline-block;
-    
-    /* Remove any default margin that might be affecting the layout */
-    margin: 15px 25px 15px 15px ;
+    margin: 15px 65px 15px 15px ;
 }
 
-/* 2. Style the inner LINK element (a) to set the text color and appearance */
 .sign-up a {
-    color: #fff; /* White text color */
-    text-decoration: none; /* Remove the underline */
-    
-    /* Text appearance */
+    color: #fff;
+    text-decoration: none; 
     font-size: 14px;
     font-weight: 600;
-    
-    /* Ensure the link text displays correctly inside the button */
     display: block;
 }
 
-/* Optional: Add a subtle hover effect */
 .sign-up:hover {
-    background: #222;
+    background: #70798c49;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-    /* MEDIA QUERIES*/
-
+/* MEDIA QUERY FOR SMALLER SCREENS*/
 @media only screen and (max-width: 750px){
-/* Header */
+/* HEADER SECTION */
 header{
     position: relative;
 }
@@ -141,34 +130,52 @@ header ul li:hover ul{
     display: none;
 }
 
-
 }
 
 /* HERO SECTION */
 .hero{
-        /* --- NEW CODE HERE --- */
-    display: flex;             /* 1. Turns on Flexbox layout */
-    justify-content: space-between; /* 2. Puts space between the elements */
-    align-items: center;       /* 3. Vertically centers them */
-    /* -------------------- */
-
-    /* It's helpful to give the hero container a defined height */
+    display: flex;            
+    justify-content: space-between;
+    align-items: center;    
     min-height: 80vh; 
-    padding: 20px;
+    padding: 10px;
 }
 
 .hero-text{
-    width: 50%;
+    width: 60%;
     height: 400px;
-}
-.hero-image{
-    width: 70%;
-    height: 600px;
     padding: 10px;
-    
+    line-height: 1.5;
+}
+
+.hero-text h2{
+    font-size: 6.7rem;
+    text-align:center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    color: #A99985;
+}
+
+.hero-text h3{
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.hero-text h4{
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-left: 50px;
+}
+
+.hero-image{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    height: auto;
 }
 
 .hero-image img{
     width: 100%;
-
 }

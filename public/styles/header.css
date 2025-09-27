@@ -4,7 +4,7 @@
     padding: 0px; 
 }
 
-/* Header */
+/* HEADER SECTION */
 header{
     height: 66px;
     background-color: #A99985;
@@ -14,7 +14,7 @@ header *{
     color: #252323;
 }
 
-/* Logo */
+/* LOGO */
 header .logo{
     float: left;
     height: inherit;
@@ -34,7 +34,7 @@ header .logo-text span{
     color: #DAD2BC;
 }
 
-/* Navbar */
+/* NAVBAR SECTION */
 header ul{
     float: right;
     list-style: none;
@@ -59,7 +59,7 @@ header ul li a:hover{
     color: #DAD2BC;
 }
 
-/* Nav User Drop-down */
+/* NAV USER DROP-DOWN */
 header ul li .user-link:hover{
     transform: none;
     background: #DAD2BC;
@@ -118,16 +118,16 @@ header ul li ul li a:hover{
     transform: none;
 }
 
-/* Navbar Menu */
+/* NAVBAR HAMBURGER */
 header .menu-toggle{
     display: none;
 }
 
 
-    /* MEDIA QUERIES*/
+/* MEDIA QUERY FOR SMALLER SCREENS */
 
 @media only screen and (max-width: 750px){
-/* Header */
+/* HEADER SECTION */
 header{
     position: relative;
 }

@@ -16,6 +16,10 @@ app.get("/", (req,res) =>{
     res.render("index");
 })
 
+app.get("/sign-up",(req,res) =>{
+    res.render("sign-up");
+});
+
 /*
 // app.get("/home", (req,res) =>{
 //     res.render("index",{posts: createPost});
@@ -34,10 +38,6 @@ app.post("/posts",(req,res) =>{
   
 });
 */
-
-app.get("/sign_log",(req,res) =>{
-    res.render("sign_log");
-});
 
 app.listen(port, () => {
     console.log(`Server starts at http:localhost:${port}`);

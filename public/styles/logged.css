@@ -7,7 +7,7 @@ body{
   box-sizing: border-box;
 }
 
-/* Carousel */
+/* CAROUSEL */
 .Post-h1{
   text-align: center;
   margin-top: 20px;
@@ -197,7 +197,7 @@ body{
   color: #202020;
 }
 
-/* Responsive media query code for small screens */
+/*MEDIA QUERY FOR SMALL SCREENS*/
 @media (max-width: 768px){
   .wrapper{
     margin: 0 10px 25px;
