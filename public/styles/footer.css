@@ -1,0 +1,104 @@
+/* FOOTER STYLING */
+
+.footer {
+    background: #252323; /* Dark background to match the black button and logo */
+    color: #DAD2BC; /* Light text color (from your swiper pagination) for contrast */
+    padding: 20px 40px;
+    font-family: 'Inter', sans-serif; /* Using a clean, modern font */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px; /* Space between columns */
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+}
+
+/* Common Header Styles */
+.main-footer h3, .main-footer h4 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* Brand Section */
+.footer-brand {
+    flex: 1; /* Allows it to take up more space */
+    min-width: 250px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.footer-motto {
+    font-size: 0.9rem;
+    color: #A99985; /* Highlight color */
+    margin-bottom: 20px;
+}
+
+.footer-copy {
+    font-size: 0.75rem;
+    color: #7a7a7a;
+}
+
+/* Link Columns */
+.footer-links, .footer-social {
+    min-width: 150px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #DAD2BC;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #A99985; /* Hover effect */
+}
+
+/* Social Icons */
+.social-icons{
+    margin-top: 5px;
+}
+.social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.2s;
+}
+
+.social-icons a:hover {
+    color: #A99985; /* Hover effect */
+}
+
+/* RESPONSIVENESS for small screens */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-links ul {
+        margin-bottom: 30px;
+    }
+    
+    .footer-links, .footer-brand, .footer-social {
+        min-width: 100%;
+        margin-bottom: 20px;
+    }
+}

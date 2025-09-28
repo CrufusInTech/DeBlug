@@ -12,12 +12,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
+// Index Route 
 app.get("/", (req,res) =>{
-    res.render("index");
+    const currentYear = new Date().getFullYear();
+    res.render("index", {currentYear: currentYear});
 })
 
+// Sign  Up Route Form
 app.get("/sign-up",(req,res) =>{
     res.render("sign-up");
+});
+
+// Sign In Route Form
+app.get("/sign-in",(req,res) =>{
+    res.render("sign-in");
 });
 
 /*
