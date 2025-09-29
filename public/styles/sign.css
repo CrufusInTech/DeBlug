@@ -88,6 +88,9 @@ body{
 /* --- SSO and Separator Styling --- */
 
 .google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
@@ -105,7 +108,12 @@ body{
     background-color: #eee;
 }
 
-.google-btn i {
+.google-btn a{
+    text-decoration: none;
+    color: #333;
+}
+
+.google-btn svg {
     margin-right: 10px;
     font-size: 1.1rem;
 }
