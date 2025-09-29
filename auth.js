@@ -10,7 +10,7 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       // This is the crucial part. It must match the route in index.js
-      callbackURL: "http://localhost:3000/auth/google/callback",
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
       userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
     (accessToken, refreshToken, profile, cb) => {
