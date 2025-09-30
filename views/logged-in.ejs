@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeBlug</title>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.
-css">
-
-    <!-- Swiper Css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
-        
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Candal&family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="/styles/header.css">
-    <link rel="stylesheet" href="/styles/logged-in.css">
-
-<body>
-    <%- include('partials/header.ejs') %>
+<%- include('partials/head-main.ejs') %>
+<%- include('partials/header.ejs', { user: user }) %>
     <h1 class="Post-h1">Recent Posts</h1>
     <div class="container swiper">       
         <div class="wrapper">
@@ -156,15 +134,4 @@ css">
         </div>
     </div>
     
-
-    <!-- Jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <!-- Slider Js -->
-     
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-
-    <!--Custom Js -->
-    <script src="/main.js"></script>
-</body>
-</html>
+<%- include('partials/scripts-main.ejs') %>

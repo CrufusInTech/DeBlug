@@ -75,6 +75,7 @@ header ul li:hover .fa-chevron-up {
 }
 
 header ul li ul{
+    width: 100%;
     position: absolute;
     background: #DAD2BC;
     top: 101%;       
