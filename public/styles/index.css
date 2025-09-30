@@ -86,52 +86,6 @@ header ul li a:hover{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* MEDIA QUERY FOR SMALLER SCREENS*/
-@media only screen and (max-width: 750px){
-/* HEADER SECTION */
-header{
-    position: relative;
-}
-  
-header .logo{
-    margin-left: .7em;
-}
-
-header .logo-text{
-    font-size: 1.9rem;
-}
-
-header ul{
-    position: absolute;
-    top: 66px;
-    left: 0;
-    width: 100%;
-    display: none;
-    background: #DAD2BC;
-    z-index: 100;
-}
-
-header ul.active{
-    display: block;
-}
-
-header ul li{
-    width: 100%;
-    float: none;
-}
-
-header ul li a:hover{
-    transition: all 0.1s ease;;
-    transform: none;
-    color: #a99985d8;
-}
-
-header ul li:hover ul{
-    display: none;
-}
-
-}
-
 /* HERO SECTION */
 .hero{
     display: flex;            
@@ -179,4 +133,38 @@ header ul li:hover ul{
 
 .hero-image img{
     width: 100%;
+}
+
+/* MEDIA QUERY FOR SMALLER SCREENS*/
+@media only screen and (max-width: 750px){
+
+/* HEADER SECTION */
+  
+header .logo{
+    margin-left: 2.7em;
+    padding-top: 10px;
+}
+
+header .logo-text{
+    font-size: 1.8rem;
+}
+
+header ul{
+    background: #DAD2BC;
+}
+
+
+header ul li{
+    float: none;
+}
+
+header ul li a:hover{
+    transition: all 0.1s ease;;
+    transform: none;
+    color: #a99985d8;
+}
+
+
+/* Hero Section */
+
 }
