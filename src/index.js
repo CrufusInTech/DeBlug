@@ -1,17 +1,15 @@
 // Imports
+import 'dotenv/config'; // Make sure this is the first import
 import bodyParser from "body-parser";
 import express from "express";
-import dotenv from "dotenv";
 import session from "express-session";
 import passport from 'passport';
 
-
-dotenv.config();
 const app = express();
 const port = 3000;
 
 // Connects to my auth.js
-import './auth.js';
+import './auth.js'
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
