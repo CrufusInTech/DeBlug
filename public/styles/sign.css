@@ -21,10 +21,10 @@ body{
 /* --- FORM CARD STYLING --- */
 
 .auth-form-card {
-    background: #fff;
+    background-color: #F5F1ED;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); */
     width: 100%;
     max-width: 400px; 
 }

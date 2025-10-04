@@ -1,31 +1,62 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import { supabase } from "./supabaseClient.js"; // your supabase client
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      // This is the crucial part. It must match the route in index.js
       callbackURL: process.env.GOOGLE_CALLBACK_URL,
-      userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     },
-    (accessToken, refreshToken, profile, cb) => {
-      // Here you would find or create a user in your database
-      // For now, we'll just pass the profile to the serializeUser function
-      console.log(profile);
-      return cb(null, profile);
+    async (accessToken, refreshToken, profile, cb) => {
+      try {
+        const email = profile.emails[0].value;
+
+        // Check if email already exists in users table
+        const { data: existingUser, error } = await supabase
+          .from("users")
+          .select("*")
+          .eq("email", email)
+          .single();
+
+        if (existingUser) {
+          // Link Google ID if not already linked
+          if (!existingUser.google_id) {
+            await supabase
+              .from("users")
+              .update({ google_id: profile.id })
+              .eq("email", email);
+          }
+          return cb(null, existingUser);
+        }
+
+        //  If no user, create a new one with Google data
+        const { data: newUser, error: insertError } = await supabase
+          .from("users")
+          .insert({
+            username: profile.displayName.replace(/\s+/g, "_"),
+            email,
+            google_id: profile.id,
+          })
+          .select()
+          .single();
+
+        if (insertError) return cb(insertError, null);
+
+        return cb(null, newUser);
+      } catch (err) {
+        return cb(err, null);
+      }
     }
   )
 );
 
 passport.serializeUser((user, cb) => {
-  // Store user information in the session (e.g., user.id)
   cb(null, user);
 });
 
 passport.deserializeUser((user, cb) => {
-  // Retrieve user information from the session
-  // In a real app, you'd fetch the user from the DB using the id
   cb(null, user);
 });
+

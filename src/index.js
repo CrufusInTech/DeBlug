@@ -1,9 +1,13 @@
 // Imports
 import 'dotenv/config'; // Make sure this is the first import
-import bodyParser from "body-parser";
 import express from "express";
 import session from "express-session";
-import passport from 'passport';
+import bodyParser from "body-parser";
+import passport from "passport";
+import { supabase } from "./supabaseClient.js";
+import "./auth.js"; // import the Google auth config
+import bcrypt from "bcrypt";
+
 
 const app = express();
 const port = 3000;
@@ -14,9 +18,6 @@ import './auth.js'
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-
-// Create Post Variable Array
-const createPost = [];
 
 
 //        Session & Passport Middleware        //
@@ -35,8 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Auth-Google Route
-app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] })
-)
+app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 // Callback Url
 app.get("/auth/google/callback",passport.authenticate("google", {failureRedirect:"/sign-in"}), (req, res) => {
@@ -58,19 +58,76 @@ app.get("/", (req,res) =>{
 })
 
 // Sign Up Route Form
-app.get("/sign-up",(req,res) =>{
+app.get("/sign-up", (req,res) =>{
     res.render("sign-up");
 });
 
+app.post("/sign-up", async (req, res) => {
+  const { username, email, password } = req.body;
+
+  // 1️⃣ Check for existing email or username
+  const { data: existingEmail } = await supabase
+    .from("users")
+    .select("id")
+    .eq("email", email)
+    .single();
+
+  const { data: existingUsername } = await supabase
+    .from("users")
+    .select("id")
+    .eq("username", username)
+    .single();
+
+  if (existingEmail) return res.send("Email already in use");
+  if (existingUsername) return res.send("Username already taken");
+
+  // 2️⃣ Hash password
+  const password_hash = await bcrypt.hash(password, 10);
+
+  // 3️⃣ Insert user
+  const { data: newUser, error } = await supabase
+    .from("users")
+    .insert({ username, email, password_hash })
+    .select()
+    .single();
+
+  if (error) return res.send(error.message);
+
+  res.send("Sign up successful! Please confirm your email before logging in.");
+});
+
 // Sign In Route Form
-app.get("/sign-in",(req,res) =>{
+app.get("/sign-in", (req,res) =>{
     res.render("sign-in");
+});
+
+app.post("/sign-in", async (req, res, next) => {
+  const { email, password } = req.body;
+
+  const { data: user } = await supabase
+    .from("users")
+    .select("*")
+    .eq("email", email)
+    .single();
+
+  if (!user) return res.send("Email or password incorrect");
+
+  if (!user.password_hash)
+    return res.send("This account was created with Google. Please log in with Google.");
+
+  const valid = await bcrypt.compare(password, user.password_hash);
+  if (!valid) return res.send("Email or password incorrect");
+
+  req.login(user, (err) => {
+    if (err) return next(err);
+    res.redirect("/logged-in");
+  });
 });
 
 // Logged-in Route
 // Protect the /logged-in route
 app.get("/logged-in", ensureAuthenticated, (req,res) =>{
-    res.render("logged-in", { user: req.user });
+  res.render("logged-in", { user: req.user });
 });
 
 // Logged Out Route
