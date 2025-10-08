@@ -35,6 +35,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Middleware to make user object available to all templates
+app.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
+});
+
 // Auth-Google Route
 app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
@@ -51,14 +57,22 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/sign-in');
 }
 
+// Middleware to redirect authenticated users from public pages like home
+function redirectIfAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return res.redirect('/logged-in');
+    }
+    next();
+}
+
 // Index Route 
-app.get("/", (req,res) =>{
+app.get("/", redirectIfAuthenticated, (req,res) =>{
     const currentYear = new Date().getFullYear();
     res.render("index", {currentYear: currentYear});
 })
 
 // Sign Up Route Form
-app.get("/sign-up", (req,res) =>{
+app.get("/sign-up", redirectIfAuthenticated, (req,res) =>{
     res.render("sign-up");
 });
 
@@ -97,7 +111,7 @@ app.post("/sign-up", async (req, res) => {
 });
 
 // Sign In Route Form
-app.get("/sign-in", (req,res) =>{
+app.get("/sign-in", redirectIfAuthenticated, (req,res) =>{
     res.render("sign-in");
 });
 
