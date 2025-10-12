@@ -35,7 +35,8 @@
             <span>OR</span>
         </div>
 
-        <form action="#" method="POST" class="signup-form">
+        <form action="/sign-in" method="POST" class="signup-form">
+
             <div class="form-group">
                 <label for="username">Username</label>
                 <input 
@@ -64,6 +65,12 @@
                     <i class="fas fa-eye-slash toggle-password" data-target="password"></i>
                 </div>
             </div>
+
+            <% if (message && message.length > 0) { %>
+                <div class="form-error">
+                    <%= message %>
+                </div>
+            <% } %>
             
             <button type="submit" class="submit-btn">Sign In</button>
         </form>

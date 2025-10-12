@@ -13,15 +13,16 @@ passport.use(
       try {
         const email = profile.emails[0].value;
 
-        // Check if email already exists in users table
+        // 1. Check if a user profile already exists in our public 'users' table
         const { data: existingUser, error } = await supabase
           .from("users")
           .select("*")
           .eq("email", email)
           .single();
 
+        // If the user exists, return their profile from our table
         if (existingUser) {
-          // Link Google ID if not already linked
+          // Optional: Link Google ID if not already linked
           if (!existingUser.google_id) {
             await supabase
               .from("users")
@@ -31,10 +32,11 @@ passport.use(
           return cb(null, existingUser);
         }
 
-        //  If no user, create a new one with Google data
+        // 2. If no user, create a new one in our public 'users' table
         const { data: newUser, error: insertError } = await supabase
           .from("users")
           .insert({
+            id: profile.id, // Use the google profile id as the user id
             username: profile.displayName.replace(/\s+/g, "_"),
             email,
             google_id: profile.id,
@@ -59,4 +61,3 @@ passport.serializeUser((user, cb) => {
 passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
-

@@ -36,6 +36,12 @@ body{
     font-size: 1.8rem;
 }
 
+
+.form-error{
+    text-align: center;
+    color: #555;
+}
+
 /* --- INPUTS AND BUTTONS --- */
 
 .form-group {

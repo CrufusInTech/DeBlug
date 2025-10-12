@@ -3,6 +3,7 @@ import 'dotenv/config'; // Make sure this is the first import
 import express from "express";
 import session from "express-session";
 import bodyParser from "body-parser";
+import flash from "connect-flash";
 import passport from "passport";
 import { supabase } from "./supabaseClient.js";
 import "./auth.js"; // import the Google auth config
@@ -28,15 +29,15 @@ app.use(
         secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: true,
-        cookie: {
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 1 week in milliseconds
-        }
     })
 );
 
 // Passport to manage authentication
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Flash messages for displaying errors
+app.use(flash());
 
 // Middleware to make user object available to all templates
 app.use((req, res, next) => {
@@ -60,82 +61,94 @@ function ensureAuthenticated(req, res, next) {
     res.redirect('/sign-in');
 }
 
-// Middleware to redirect authenticated users from public pages like home
-function redirectIfAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return res.redirect('/logged-in');
-    }
-    next();
-}
 
 // Index Route 
-app.get("/", redirectIfAuthenticated, (req,res) =>{
+app.get("/", (req,res) =>{
     const currentYear = new Date().getFullYear();
     res.render("index", {currentYear: currentYear});
 })
 
 // Sign Up Route Form
-app.get("/sign-up", redirectIfAuthenticated, (req,res) =>{
+app.get("/sign-up", (req,res) =>{
     res.render("sign-up");
 });
 
 app.post("/sign-up", async (req, res) => {
-  const { username, email, password } = req.body;
+    const { username, email, password } = req.body;
 
-  // 1️⃣ Check for existing email or username
-  const { data: existingEmail } = await supabase
-    .from("users")
-    .select("id")
-    .eq("email", email)
-    .single();
+    // 1️⃣ Use Supabase Auth to sign up the user
+    // This will send a confirmation email by default.
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+    });
 
-  const { data: existingUsername } = await supabase
-    .from("users")
-    .select("id")
-    .eq("username", username)
-    .single();
+    if (authError) {
+        return res.status(400).send(authError.message);
+    }
 
-  if (existingEmail) return res.send("Email already in use");
-  if (existingUsername) return res.send("Username already taken");
+    if (authData.user) {
+        // 2️⃣ If auth user is created, insert into your public 'users' table
+        const { error: profileError } = await supabase
+            .from('users')
+            .insert({
+                id: authData.user.id, // Link to the auth.users table
+                username: username,
+                email: email
+            });
 
-  // 2️⃣ Hash password
-  const password_hash = await bcrypt.hash(password, 10);
+        if (profileError) {
+            // Note: In a real app, you might want to delete the auth user if profile creation fails.
+            return res.status(500).send("Error creating user profile: " + profileError.message);
+        }
 
-  // 3️⃣ Insert user
-  const { data: newUser, error } = await supabase
-    .from("users")
-    .insert({ username, email, password_hash })
-    .select()
-    .single();
+        return res.send("Sign up successful! Please check your email to confirm your account.");
+    }
 
-  if (error) return res.send(error.message);
-
-  res.send("Sign up successful! Please confirm your email before logging in.");
+    res.status(500).send("An unknown error occurred during sign up.");
 });
 
 // Sign In Route Form
-app.get("/sign-in", redirectIfAuthenticated, (req,res) =>{
-    res.render("sign-in");
+app.get("/sign-in", (req,res) =>{
+    res.render("sign-in", { message: req.flash('error') });
 });
 
 app.post("/sign-in", async (req, res, next) => {
-  const { email, password } = req.body;
+    const { username, email, password } = req.body;
 
-  const { data: user } = await supabase
-    .from("users")
-    .select("*")
-    .eq("email", email)
-    .single();
+    // Use Supabase to sign in and verify the password
+    const { data: { user: authUser }, error: authError } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+    });
+    
+    // If email/password is wrong, or user doesn't exist.
+    if (authError || !authUser) {
+        req.flash('error', 'Invalid credentials. Please try again.');
+        return res.redirect('/sign-in');
+    }
 
-  if (!user) return res.send("Email or password incorrect");
+    // Fetch the user profile from your public 'users' table
+    const { data: userProfile, error: profileError } = await supabase
+        .from('users')
+        .select('*')
+        .eq('id', authUser.id)
+        .single();
+    
+    // If we can't find their profile for some reason.
+    if (profileError || !userProfile) {
+        req.flash('error', 'Could not find user profile.');
+        return res.redirect('/sign-in');
+    }
+    
+    // Check if the username from the form matches the one in the database.
+    if (userProfile.username !== username) {
+        req.flash('error', 'Invalid credentials. Please try again.');
+        return res.redirect('/sign-in');
+    }
 
-  if (!user.password_hash)
-    return res.send("This account was created with Google. Please log in with Google.");
-
-  const valid = await bcrypt.compare(password, user.password_hash);
-  if (!valid) return res.send("Email or password incorrect");
-
-  req.login(user, (err) => {
+  // Use the full userProfile object for the session
+  req.login(userProfile, (err) => {
     if (err) return next(err);
     res.redirect("/logged-in");
   });
