@@ -28,6 +28,10 @@
     min-width: 250px;
 }
 
+.footer-brand h3{
+    margin-bottom: 0.3rem;
+}
+
 .footer-logo {
     font-size: 1.8rem;
     font-weight: 800;
@@ -88,17 +92,11 @@
 /* RESPONSIVENESS for small screens */
 @media (max-width: 768px) {
     .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        /* align-items: center; */
     }
     
-    .footer-links ul {
-        margin-bottom: 30px;
-    }
-    
-    .footer-links, .footer-brand, .footer-social {
-        min-width: 100%;
+    .footer-links, .footer-brand{
+        max-width: 100%;
         margin-bottom: 20px;
     }
 }

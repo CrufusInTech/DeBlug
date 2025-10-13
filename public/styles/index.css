@@ -141,8 +141,8 @@ header .menu-toggle{
 }
 
 
-/* MEDIA QUERY FOR SMALLER SCREENS */
-@media only screen and (max-width: 750px) {
+/* MEDIA QUERY FOR MAX 900PX */
+@media only screen and (max-width: 901px) {
 .hide-mobile{
     display: none;
 }
@@ -157,7 +157,7 @@ header {
 
 header .logo {
     float: left;
-    margin-left: 20px;
+    margin-left: 40px;
     display: inline;
   }
 
@@ -170,6 +170,7 @@ header ul{
     align-items: center;
     justify-content: center;
     width: auto;
+    height: auto;
 }
 
 header ul li {
@@ -195,32 +196,83 @@ header ul li a {
 
   /* ===== HERO ===== */
 .hero {
-
     text-align: center;
     padding: 20px;
+    padding-top: 0px;
 }
 
 .hero-text {
-    width: 100%;
+    /* width: 100%; */
     height: auto;
     padding: 0;
+    margin-left: 25px;
 }
 
 .hero-text h2 {
-    font-size: 3rem;
+    font-size: 6rem;
     line-height: 1.2;
+    text-align: left;
 }
 
 .hero-text h3 {
-    font-size: 1.8rem;
+    font-size: 2.8rem;
     margin-bottom: 15px;
+    text-align: left;
 }
 
 .hero-text h4 {
-    font-size: 0.95rem;
-    margin-left: 0;
-    padding: 0 10px;
+    font-size: 1rem;
+    padding: 10px 0px;
+    margin-left: 0px;
+    text-align: left;
 }
+
+}
+
+/* MEDIA QUERY FOR SMALLER SCREENS */
+@media only screen and (max-width: 730px) {
+.hide-s_mobile{
+    display: none;
+}
+
+/* HEADER */
+header .logo-text {
+    font-size: 1.7rem;
+  }
+
+/* ===== HERO ===== */
+.hero {
+    text-align: center;
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.hero-text {
+    /* width: 100%; */
+    height: auto;
+    padding: 0;
+    margin-left: 25px;
+}
+
+.hero-text h2 {
+    font-size: 4rem;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.hero-text h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.hero-text h4 {
+    font-size: 1rem;
+    padding: 10px 0px;
+    margin-left: 0px;
+    text-align: left;
+}
+
 
 
 }
