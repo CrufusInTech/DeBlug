@@ -135,36 +135,92 @@ header ul li a:hover{
     width: 100%;
 }
 
-/* MEDIA QUERY FOR SMALLER SCREENS*/
-@media only screen and (max-width: 750px){
-
-/* HEADER SECTION */
-  
-header .logo{
-    margin-left: 2.7em;
-    padding-top: 10px;
+/* NAVBAR HAMBURGER */
+header .menu-toggle{
+    display: none;
 }
 
-header .logo-text{
+
+/* MEDIA QUERY FOR SMALLER SCREENS */
+@media only screen and (max-width: 750px) {
+.hide-mobile{
+    display: none;
+}
+  /* ===== HEADER ===== */
+header {
+    height: auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+header .logo {
+    float: left;
+    margin-left: 20px;
+    display: inline;
+  }
+
+header .logo-text {
     font-size: 1.8rem;
-}
+  }
 
 header ul{
-    background: #DAD2BC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+header ul li {
+    display: inline;
+  }
+
+header ul li a {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+}
+  
+.sign-up {
+    background: #545a68;
+    border: none;
+    border-radius: 50px;
+    padding:  10px 15px; 
+    margin: 15px 35px 15px 15px ;
 }
 
 
-header ul li{
-    float: none;
+
+  /* ===== HERO ===== */
+.hero {
+
+    text-align: center;
+    padding: 20px;
 }
 
-header ul li a:hover{
-    transition: all 0.1s ease;;
-    transform: none;
-    color: #a99985d8;
+.hero-text {
+    width: 100%;
+    height: auto;
+    padding: 0;
 }
 
+.hero-text h2 {
+    font-size: 3rem;
+    line-height: 1.2;
+}
 
-/* Hero Section */
+.hero-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.hero-text h4 {
+    font-size: 0.95rem;
+    margin-left: 0;
+    padding: 0 10px;
+}
+
 
 }
