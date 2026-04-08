@@ -86,7 +86,7 @@ app.post("/sign-up", async (req, res) => {
     if (authError) {
         return res.status(400).send(authError.message);
     }
-
+1
     if (authData.user) {
         // 2️⃣ If auth user is created, insert into your public 'users' table
         const { error: profileError } = await supabase
