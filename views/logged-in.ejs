@@ -1,128 +1,46 @@
 <%- include('partials/head-logged.ejs') %>
 <%- include('partials/header.ejs', { user: user }) %>
+
     <h1 class="Post-h1">Recent Posts</h1>
+
     <div class="container swiper">       
         <div class="wrapper">
             <div class="card-list swiper-wrapper">
-                <div class="card swiper-slide  ">
-                    <div class="card-image">
-                        <img src="/images/image_1.jpg" alt="Development">
-                        <p class="card-tag">Development</p>
-                    </div>
 
-                    <div class="card-content">
-                        <h3 class="card-title">Deployment scarred me</h3>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci recusandae soluta consectetur.</p>
-                        
-                        <div class="card-footer">
-                            <div class="card-profile">
-                                <img src="/images/image_1.jpg" alt="John Doe">
+                <% if (posts.length > 0) { %>
+                    <% posts.forEach(post => { %>
+                        <div class="card swiper-slide">
+                            <div class="card-image">
+                                <img src="/images/image_1.jpg" alt="<%= post.title %>">
+                                <p class="card-tag">Development</p>
+                            </div>
+
+                            <div class="card-content">
+                                <h3 class="card-title"><%= post.title %></h3>
+                                <p class="card-text">
+                                    <%= post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content %>
+                                </p>
                                 
-                                <div class="card-profile-info">
-                                    <span class="card-profile-name">John Doe</span>
-                                    <span class="card-profile-role">Developer</span>
+                                <div class="card-footer">
+                                    <div class="card-profile">
+                                        <i class="fa fa-user card-profile-icon"></i>
+                                        <div class="card-profile-info">
+                                            <span class="card-profile-name"><%= post.users.username %></span>
+                                            <span class="card-profile-role">Developer</span>
+                                        </div>
+                                    </div>
+                                    <a href="/posts/<%= post.id %>" class="card-button">Read More</a>
                                 </div>
                             </div>
-                            <a href="#" class="card-button">Read More</a>
                         </div>
-                    </div>
-                </div>
+                    <% }) %>
 
-                <div class="card swiper-slide">
-                    <div class="card-image">
-                        <img src="/images/image_1.jpg" alt="Development">
-                        <p class="card-tag">Development</p>
+                <% } else { %>
+                    <div class="no-posts">
+                        <p>No posts yet. <a href="/posts/new">Be the first to write one!</a></p>
                     </div>
+                <% } %>
 
-                    <div class="card-content">
-                        <h3 class="card-title">The auth that made me cry</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci recusandae soluta consectetur.</p>
-                        
-                        <div class="card-footer">
-                            <div class="card-profile">
-                                <img src="/images/image_1.jpg" alt="John Doe">
-                                
-                                <div class="card-profile-info">
-                                    <span class="card-profile-name">John Doe</span>
-                                    <span class="card-profile-role">Developer</span>
-                                </div>
-                            </div>
-                            <a href="#" class="card-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card swiper-slide">
-                    <div class="card-image">
-                        <img src="/images/image_1.jpg" alt="Development">
-                        <p class="card-tag">Development</p>
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="card-title">That one web designer</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci recusandae soluta consectetur.</p>
-                        
-                        <div class="card-footer">
-                            <div class="card-profile">
-                                <img src="/images/image_1.jpg" alt="John Doe">
-                                
-                                <div class="card-profile-info">
-                                    <span class="card-profile-name">John Doe</span>
-                                    <span class="card-profile-role">Developer</span>
-                                </div>
-                            </div>
-                            <a href="#" class="card-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card swiper-slide">
-                    <div class="card-image">
-                        <img src="/images/image_1.jpg" alt="Development">
-                        <p class="card-tag">Development</p>
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="card-title">I should have been a farmer</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci recusandae soluta consectetur.</p>
-                        
-                        <div class="card-footer">
-                            <div class="card-profile">
-                                <img src="/images/image_1.jpg" alt="John Doe">
-                                
-                                <div class="card-profile-info">
-                                    <span class="card-profile-name">John Doe</span>
-                                    <span class="card-profile-role">Developer</span>
-                                </div>
-                            </div>
-                            <a href="#" class="card-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card swiper-slide">
-                    <div class="card-image">
-                        <img src="/images/image_1.jpg" alt="Development">
-                        <p class="card-tag">Development</p>
-                    </div>
-
-                    <div class="card-content">
-                        <h3 class="card-title">The error that broke me</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci recusandae soluta consectetur.</p>
-                        
-                        <div class="card-footer">
-                            <div class="card-profile">
-                                <img src="/images/image_1.jpg" alt="John Doe">
-                                
-                                <div class="card-profile-info">
-                                    <span class="card-profile-name">John Doe</span>
-                                    <span class="card-profile-role">Developer</span>
-                                </div>
-                            </div>
-                            <a href="#" class="card-button">Read More</a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Pagination -->
@@ -133,5 +51,5 @@
             <div class="swiper-button-next"></div>
         </div>
     </div>
-    
+
 <%- include('partials/scripts-main.ejs') %>

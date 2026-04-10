@@ -13,7 +13,7 @@
             <li class="user-list" >
                 <a href="#" class="user-link">
                     <i class="fa fa-user"></i>
-                    <%= user.username || user.displayName %>
+                    <%= (user.username || user.displayName).split(/[\s_]/)[0] %>
                     <i class="fa fa-chevron-down" style="font-size: .8em;"></i>
                 </a>
                 <ul class="drop-down">

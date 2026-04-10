@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeBlogger</title>
+    <title>New Post | DeBlug</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Candal&family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Custom Css -->
     <link rel="stylesheet" href="/styles/post-form.css">
 </head>
 <body>
@@ -11,15 +18,14 @@
 
         <form action="/posts" method="POST">
 
-        
             <div class="form-group">
-                <label for="postTitle">Post Title</label>
-                <input type="text" id="postTitle" name="postTitle" placeholder="Enter your post title" required> 
+                <label for="title">Post Title</label>
+                <input type="text" id="title" name="title" placeholder="Enter your post title" required>
             </div>
         
             <div class="form-group">
-                <label for="postContent">Post Content</label>
-                <textarea name="postContent" id="postContent" placeholder="Type here"></textarea>
+                <label for="content">Post Content</label>
+                <textarea name="content" id="content" placeholder="Type here" required></textarea>
             </div>
 
             <button type="submit">Submit Post</button>

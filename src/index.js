@@ -1,104 +1,87 @@
-// Imports
-import 'dotenv/config'; // Make sure this is the first import
+import 'dotenv/config';
 import express from "express";
 import session from "express-session";
 import bodyParser from "body-parser";
 import flash from "connect-flash";
 import passport from "passport";
 import { supabase } from "./supabaseClient.js";
-import "./auth.js"; // import the Google auth config
-import bcrypt from "bcrypt";
-
+import "./auth.js";
 
 const app = express();
 const port = 3000;
 
-// Connects to my auth.js
-import './auth.js'
-
-app.use(bodyParser.urlencoded({extended: true}));
+// ─── Middleware ───────────────────────────────────────────────
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-
-//        Session & Passport Middleware        //
-// Session Management
-
+// ─── Session ──────────────────────────────────────────────────
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
         resave: false,
-        saveUninitialized: true,
+        saveUninitialized: false,
     })
 );
 
-// Passport to manage authentication
+// ─── Passport ─────────────────────────────────────────────────
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Flash messages for displaying errors
+// ─── Flash Messages ───────────────────────────────────────────
 app.use(flash());
 
-// Middleware to make user object available to all templates
+// ─── Global Template Variables ────────────────────────────────
 app.use((req, res, next) => {
-    res.locals.user = req.user;
+    res.locals.user = req.user || null;
     next();
 });
 
-// Auth-Google Route
-app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
-
-// Callback Url
-app.get("/auth/google/callback",passport.authenticate("google", {failureRedirect:"/sign-in"}), (req, res) => {
-    res.redirect("/logged-in");
-})
-
-// Middleware to check if a user is authenticated
+// ─── Auth Guard ───────────────────────────────────────────────
 function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
+    if (req.isAuthenticated()) return next();
     res.redirect('/sign-in');
 }
 
+// ═════════════════════════════════════════════════════════════
+//  ROUTES
+// ═════════════════════════════════════════════════════════════
 
-// Index Route 
-app.get("/", (req,res) =>{
+// Index
+app.get("/", (req, res) => {
     const currentYear = new Date().getFullYear();
-    res.render("index", {currentYear: currentYear});
-})
+    res.render("index", { currentYear });
+});
 
-// Sign Up Route Form
-app.get("/sign-up", (req,res) =>{
+// ─── Sign Up ──────────────────────────────────────────────────
+app.get("/sign-up", (req, res) => {
     res.render("sign-up");
 });
 
 app.post("/sign-up", async (req, res) => {
     const { username, email, password } = req.body;
 
-    // 1️⃣ Use Supabase Auth to sign up the user
-    // This will send a confirmation email by default.
+    // Create auth user via Supabase
     const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: email,
-        password: password,
+        email,
+        password,
     });
 
     if (authError) {
         return res.status(400).send(authError.message);
     }
-1
+
     if (authData.user) {
-        // 2️⃣ If auth user is created, insert into your public 'users' table
+        // Insert into public users table
         const { error: profileError } = await supabase
             .from('users')
             .insert({
-                id: authData.user.id, // Link to the auth.users table
-                username: username,
-                email: email
+                id: authData.user.id,
+                username,
+                email,
             });
 
         if (profileError) {
-            // Note: In a real app, you might want to delete the auth user if profile creation fails.
             return res.status(500).send("Error creating user profile: " + profileError.message);
         }
 
@@ -108,85 +91,76 @@ app.post("/sign-up", async (req, res) => {
     res.status(500).send("An unknown error occurred during sign up.");
 });
 
-// Sign In Route Form
-app.get("/sign-in", (req,res) =>{
+// ─── Sign In ──────────────────────────────────────────────────
+app.get("/sign-in", (req, res) => {
     res.render("sign-in", { message: req.flash('error') });
 });
 
 app.post("/sign-in", async (req, res, next) => {
-    const { username, email, password } = req.body;
+    const { email, password } = req.body;
 
-    // Use Supabase to sign in and verify the password
+    // Verify credentials with Supabase Auth
     const { data: { user: authUser }, error: authError } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password,
+        email,
+        password,
     });
-    
-    // If email/password is wrong, or user doesn't exist.
+
     if (authError || !authUser) {
         req.flash('error', 'Invalid credentials. Please try again.');
         return res.redirect('/sign-in');
     }
 
-    // Fetch the user profile from your public 'users' table
+    // Fetch the matching profile from the public users table
     const { data: userProfile, error: profileError } = await supabase
         .from('users')
         .select('*')
         .eq('id', authUser.id)
         .single();
-    
-    // If we can't find their profile for some reason.
+
     if (profileError || !userProfile) {
         req.flash('error', 'Could not find user profile.');
         return res.redirect('/sign-in');
     }
-    
-    // Check if the username from the form matches the one in the database.
-    if (userProfile.username !== username) {
-        req.flash('error', 'Invalid credentials. Please try again.');
-        return res.redirect('/sign-in');
+
+    // Log the user into the session
+    req.login(userProfile, (err) => {
+        if (err) return next(err);
+        res.redirect("/logged-in");
+    });
+});
+
+// ─── Google OAuth ─────────────────────────────────────────────
+app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+
+app.get("/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/sign-in" }),
+    (req, res) => {
+        res.redirect("/logged-in");
+    }
+);
+
+// ─── Logged In ────────────────────────────────────────────────
+app.get("/logged-in", ensureAuthenticated, async (req, res) => {
+    const { data: posts, error } = await supabase
+        .from('posts')
+        .select('*, users(username)')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        console.error("Error fetching posts:", error.message);
     }
 
-  // Use the full userProfile object for the session
-  req.login(userProfile, (err) => {
-    if (err) return next(err);
-    res.redirect("/logged-in");
-  });
+    res.render("logged-in", { user: req.user, posts: posts || [] });
 });
 
-// Logged-in Route
-// Protect the /logged-in route
-app.get("/logged-in", ensureAuthenticated, (req,res) =>{
-  res.render("logged-in", { user: req.user });
-});
-
-// Logged Out Route
-app.get("/logged-out", ensureAuthenticated, (req,res) =>{
-    req.logOut(() =>{
+// ─── Logout ───────────────────────────────────────────────────
+app.get("/logged-out", ensureAuthenticated, (req, res) => {
+    req.logout(() => {
         res.redirect("/");
-    }); 
+    });
 });
 
-
-/*
-// app.get("/home", (req,res) =>{
-//     res.render("index",{posts: createPost});
-// })
-
-app.post("/posts",(req,res) =>{
-    // Accessing my Post form details
-    const postForm = req.body;
-    console.log("recieved form data", postForm);
-
-    // Sent my post form details to my create post array
-    createPost.push(postForm);
-    console.log("This is my updated creatPost array",createPost);
-    res.redirect("/home");
-    
-  
-});
-*/
-
+// ─── Server ───────────────────────────────────────────────────
 app.listen(port, () => {
-    console.log(`Server starts at http:localhost:${port}`);
-})
+    console.log(`Server running at http://localhost:${port}`);
+});
